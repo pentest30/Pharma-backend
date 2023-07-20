@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hydrapharm-customer-services",
+  "private_key_id": "4839bb172eb10bf77182fdbedad7f932484535b6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDW7ZS+qV5P6zlc\nv9r+nYArTA39vcFH6kHDhGE3Whaa1JoNGs1AAgF1jrUMl6B3ipz8LAC1zU/Rvxe7\n97J/YH+FBD/vwGCS1dw35/X17h23QMitK1E829pfcVOF4TRQ83RyR10M6/U0frKH\nJ/qa955bGuEVVipf4gOh6meg4vi9+1t3LjTPu4wyUBAKeMoX7ZXEtXZTsE+j6m+n\n4kqTy3ZpOX+r7JJgA9kazkZ1OcGYRAS2Yw/lD7BuquAsrBxMnVV3d8VajrGGZaGt\nQSMNAE635QSVDCBh7NHmurdTTbkcemZM47sAdLMrD8yuEpHoCOxL5/3Ofy/erVlM\nG4Q/egIZAgMBAAECggEAAa7yWb7PPg7A1HUV6itR7nqzqn0CbvtvJdxffrEpdK+Q\nTrvyLTcniJEf7aXayfSKZjVG+gKld9fJ5cRToXRjF02WTDQIC21I6HJTcXQGWMNb\nMTPwdbCDAKH71j/7HX+Ep4afc6VyPyLRZ87wC/kFDRpIcNQDBbQeiQzzt4nX7Veg\n4C9094/2o5nf0L32peQonwPNxFBlJ4zzxa85XQfYiW3KYWjCXoD/Uvinxnq6RGQd\nANzeFyOufzInbDoMNueH1//LmuarqlzUMKeUcfYWyRzzxW365Y14zmrSDHp8HrdP\nmIWGExXKlkvQmUrAb/eAg2WInFKizn9JpMVxATtYkQKBgQD0Ik7R3M/zyeoJ6tp6\nQBxyVCvYJ9SCUA0jzU1xAAePsUzCJVf+zN8jk5neKFNshC9i6d4CmNHG+6hsfgkx\ng6UpgfVDFUXYTjxUOc/vcaXcKdQwnemI7m45P0k7i8uDda8jLniAq+Ybfu8+0HEI\nZ4NiqknaPQ9faZu7SCjcsDh2EQKBgQDhX98UASEHWRtl8Kq/+GvZ2mg7kB5I0thN\nEngUywOQHsy1CdQzdhRsARMKLA/HhzLlt5HPUmWeEQfj2PmT3bVtn4MUjJEroPnn\nIpfXxQCtnCe5oaXsPEZoJsbG8ZVT1P6lQ7rSvqvf8ydspDXT+bVivF9hdwGFDJEa\nJAcrLrajiQKBgAMKKlESnsQ6T1+wPOgoxDHoOmOGm27D8GXxuHUfuvhfDMWeEWpq\nwpx+yfuqJN/FBZIFt23w2SvRFlfDefnT2cqag6NCMIxw7O9fiOdCUv5axvmT/cRm\ns5ii4RaMtwv7+yJFAdsYSNUuz2vIzJ9+KnSgCitdd0OI3ReH3npg91MBAoGAf07E\nmGw62AfBrkfQbDhL0/fHwT2bnc9cV80C/9vd219Ki0lOEPO2fXvt4WUaVL9OROz4\n9H+63xsHtfEuqhQnFBFy3fy5VEfOYn3r//pMc8Utu3JQY614qASfbGmyzHQYlAo6\nUilatVqI/pmTvnXjvC5kQo4S0bFTlcycMAxnJuECgYEAngXdMcyZRGmKP2l5wRjK\nQokDWNBIOdR8kU7Sz4WOumEesttWJ3/s8qFIj1c+LVNmkdwQihyTaBaj9uJC7vOg\nPQKSNLJCmeqcthchif5oEzVrFavGwZPLfvEBdd4eqbf9itzr24/zrcv80dviyP+S\n36zOEi0xBlkrSiscynRLoJM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-cy4j8@hydrapharm-customer-services.iam.gserviceaccount.com",
+  "client_id": "117298022542807090063",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-cy4j8%40hydrapharm-customer-services.iam.gserviceaccount.com"
+}

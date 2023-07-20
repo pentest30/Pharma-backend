@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\PreparationOrderDb\20210715152706_init.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210715152706_init.Designer.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725104302_AddIdentifierNumberSequence.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725104302_AddIdentifierNumberSequence.Designer.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725105207_AddIdentifierNumberSequence.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725105207_AddIdentifierNumberSequence.Designer.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725105611_AddIdentifierNumberSequence.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725105611_AddIdentifierNumberSequence.Designer.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725110710_AddIdentifierNumberSequence.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725110710_AddIdentifierNumberSequence.Designer.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725112025_AddIdentifierNumberSequence.cs" />
+    <Compile Remove="Migrations\PreparationOrderDb\20210725112025_AddIdentifierNumberSequence.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+     <ProjectReference Include="..\..\GHPCommerce.BackEnd\GHPCommerce.IS4Admin\GHPCommerce.IS4Admin.csproj" />
+     <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.HumanResource\GHPCommerce.Modules.HumanResource.csproj" />
+     <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.PreparationOrder\GHPCommerce.Modules.PreparationOrder.csproj" />
+     <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Procurement\GHPCommerce.Modules.Procurement.csproj" />
+     <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Quota\GHPCommerce.Modules.Quota.csproj" />
+     <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Sales\GHPCommerce.Modules.Sales.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Inventory\GHPCommerce.Modules.Inventory.csproj" />
+    <ProjectReference Include="..\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+    <ProjectReference Include="..\GHPCommerce.Persistence\GHPCommerce.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\ProcurementDb" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

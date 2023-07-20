@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="CompoundRunConfigurationType">
+    <toRun name="GHPCommerce.Notification: GHPCommerce.Notfication" type="LaunchSettings" />
+    <toRun name="GHPCommerce.IS4Admin" type="LaunchSettings" />
+    <toRun name="GHPCommerce.WebApi" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>

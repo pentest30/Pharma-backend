@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Commands" />
+      <Folder Include="Controllers" />
+      <Folder Include="DTOs" />
+      <Folder Include="MapperProfiles" />
+      <Folder Include="MappingConfigurations" />
+      <Folder Include="Queries" />
+      <Folder Include="Repositories" />
+    </ItemGroup>
+
+</Project>

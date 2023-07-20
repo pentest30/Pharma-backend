@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>GHPCommerce.Core.Shared</id>
+    <version>1.0.0</version>
+    <title>shared contracts</title>
+    <authors>ghp</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <description>shared contracts</description>
+    <releaseNotes>shared contracts this release of the package.</releaseNotes>
+    <copyright>free</copyright>
+    <tags>DOTNET</tags>
+  </metadata>
+</package>

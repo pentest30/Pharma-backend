@@ -1,0 +1,8 @@
+2022-12-08 15:11:28.530 +01:00 [ERR] Failed to serialize message
+2022-12-08 15:11:28.556 +01:00 [ERR] Self referencing loop detected for property 'manifestModule' with type 'System.Reflection.RuntimeModule'. Path 'message.request.onBeforeDeserialization.method.module.assembly'.
+2022-12-08 15:13:31.265 +01:00 [ERR] Failed to serialize message
+2022-12-08 15:13:31.265 +01:00 [ERR] Self referencing loop detected for property 'manifestModule' with type 'System.Reflection.RuntimeModule'. Path 'message.request.onBeforeDeserialization.method.module.assembly'.
+2022-12-08 15:16:22.313 +01:00 [ERR] Failed to serialize message
+2022-12-08 15:16:22.313 +01:00 [ERR] Self referencing loop detected for property 'manifestModule' with type 'System.Reflection.RuntimeModule'. Path 'message.request.onBeforeDeserialization.method.module.assembly'.
+2022-12-08 15:18:24.421 +01:00 [ERR] Failed to serialize message
+2022-12-08 15:18:24.448 +01:00 [ERR] Self referencing loop detected for property 'manifestModule' with type 'System.Reflection.RuntimeModule'. Path 'message.request.onBeforeDeserialization.method.module.assembly'.

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="EFCore.DbContextFactory" Version="2.0.0" />
+	  <PackageReference Include="EFCore.Extension.Logger" Version="1.0.2" />
+	  <PackageReference Include="ElmahCore" Version="1.2.5" />
+	  <PackageReference Include="ElmahCore.Sql" Version="1.2.5" />
+	  <PackageReference Include="IdentityServer4" Version="3.1.0" />
+	  <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.1.0" />
+	  <PackageReference Include="IdentityServer4.EntityFramework" Version="3.1.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="3.1.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Domain\GHPCommerce.Domain.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns.csproj" />
+    <ProjectReference Include="..\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+  </ItemGroup>
+
+</Project>

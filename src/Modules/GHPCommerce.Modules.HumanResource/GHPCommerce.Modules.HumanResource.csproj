@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Application\GHPCommerce.Application.csproj" />
+        <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Core.Shared\GHPCommerce.Core.Shared.csproj" />
+        <ProjectReference Include="..\..\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns.csproj" />
+        <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EFCore.DbContextFactory" Version="2.0.0" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.3" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="MediatR" Version="8.1.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="3.2.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
+        <PackageReference Include="MassTransit" Version="7.2.3" />
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.2.3" />
+
+        <PackageReference Include="AutoMapper" Version="9.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+
+        <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+
+        <PackageReference Include="FluentValidation" Version="9.2.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Events" />
+      <Folder Include="Models" />
+    </ItemGroup>
+
+</Project>

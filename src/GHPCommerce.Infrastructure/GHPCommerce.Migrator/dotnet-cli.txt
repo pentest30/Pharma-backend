@@ -1,0 +1,19 @@
+﻿dotnet tool install --global dotnet-ef --version="3.1"
+
+dotnet ef migrations add ZoneGroupPrinter --context ApplicationDbContext -o Migrations/ApplicationDb
+dotnet ef migrations add Init --context QuotaDbContext -o Migrations/QuotaDb
+dotnet ef migrations add addSupplierNameInventSum --context InventoryDbContext  -o  Migrations/InventoryDb
+dotnet ef migrations add Init --context ProcurementDbContext  -o  Migrations/ProcurementDb
+dotnet ef migrations add addVendorBatchNumber --context PreparationOrderDbContext -o Migrations/PreparationOrderDb
+dotnet ef migrations add addInvoiceAttribute --context SalesDbContext -o Migrations/SalesDb
+dotnet ef migrations add Init --context HumanResourceDbContext -o Migrations/HumanResourceDb
+
+dotnet ef migrations script --context ApplicationDbContext
+
+dotnet ef database update --context ApplicationDbContext
+dotnet ef database update --context QuotaDbContext
+dotnet ef database update --context PreparationOrderDbContext
+dotnet ef database update --context ProcurementDbContext
+dotnet ef database update --context InventoryDbContext
+dotnet ef database update --context SalesDbContext
+dotnet ef database update --context HumanResourceDbContext

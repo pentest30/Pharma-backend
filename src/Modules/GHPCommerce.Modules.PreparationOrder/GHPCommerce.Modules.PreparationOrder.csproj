@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.1.8\ref\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Files" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="EvoPdf.PdfPrint.NetCore" Version="8.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.2.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.2" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="NetBarcode" Version="1.4.4" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.12.0" />
+    <PackageReference Include="PDFtoPrinter" Version="1.4.4" />
+    <PackageReference Include="QRCoder" Version="1.4.1" />
+    <PackageReference Include="BarcodeLib" Version="2.4.0" />
+    <PackageReference Include="Scriban.Signed" Version="3.4.2" />
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows" Version="19.2.0.62" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.3" />
+    <PackageReference Include="Neodynamic.SDK.WebClientPrint" Version="6.0.0" />
+    <PackageReference Include="PDFtoZPL" Version="1.3.1" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.2.3" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.4-develop.282" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.3" />
+    <PackageReference Include="Wangcaisoft.DotNet.Util.Zpl" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Application\GHPCommerce.Application.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Domain\GHPCommerce.Domain.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\AxWCFService\AxWCFService.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Core.Shared\GHPCommerce.Core.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Commands\Consolidation\ConsolidationUpdateCommand.cs">
+      <DependentUpon>PrintConsolidationOrderLabelCommand.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Files\BL-408.pdf" />
+    <None Remove="Files\BL-314.pdf" />
+    <None Remove="Files\BL-409.pdf" />
+    <None Remove="Files\BL-315.pdf" />
+    <None Remove="Files\BL-311.pdf" />
+    <None Remove="Files\BL-309.pdf" />
+    <None Remove="Files\BL-306.pdf" />
+    <None Remove="Files\BL-403.pdf" />
+    <None Remove="Files\BL-312.pdf" />
+    <None Remove="Files\BL-406.pdf" />
+    <None Remove="Files\BL-305.pdf" />
+    <None Remove="Files\BL-401.pdf" />
+    <None Remove="Files\BL-405.pdf" />
+    <None Remove="Files\BL-407.pdf" />
+    <None Remove="Files\BL-402.pdf" />
+    <None Remove="Files\BL-452.pdf" />
+    <None Remove="Files\BL-316.pdf" />
+    <None Remove="Files\BL-404.pdf" />
+    <None Remove="Files\BL-307.pdf" />
+  </ItemGroup>
+
+
+</Project>

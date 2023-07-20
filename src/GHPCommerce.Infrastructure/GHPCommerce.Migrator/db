@@ -1,0 +1,1168 @@
+﻿IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+
+GO
+
+IF SCHEMA_ID(N'Catalog') IS NULL EXEC(N'CREATE SCHEMA [Catalog];');
+
+GO
+
+IF SCHEMA_ID(N'ids') IS NULL EXEC(N'CREATE SCHEMA [ids];');
+
+GO
+
+IF SCHEMA_ID(N'Shared') IS NULL EXEC(N'CREATE SCHEMA [Shared];');
+
+GO
+
+IF SCHEMA_ID(N'Tiers') IS NULL EXEC(N'CREATE SCHEMA [Tiers];');
+
+GO
+
+IF SCHEMA_ID(N'tiers') IS NULL EXEC(N'CREATE SCHEMA [tiers];');
+
+GO
+
+CREATE TABLE [DataProtectionKeys] (
+    [Id] int NOT NULL IDENTITY,
+    [FriendlyName] nvarchar(max) NULL,
+    [Xml] nvarchar(max) NULL,
+    CONSTRAINT [PK_DataProtectionKeys] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Brands] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    CONSTRAINT [PK_Brands] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Dosages] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Dosages] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Forms] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Forms] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[INNs] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    CONSTRAINT [PK_INNs] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Lists] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Code] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [SHP] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_Lists] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Manufacturers] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Code] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manufacturers] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[Packaging] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Code] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Packaging] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[PharmacologicalClasses] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    CONSTRAINT [PK_PharmacologicalClasses] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[PickingZone] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_PickingZone] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[ProductClasses] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [ParentProductClassId] uniqueidentifier NULL,
+    [IsMedicamentClass] bit NOT NULL,
+    CONSTRAINT [PK_ProductClasses] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[TaxGroups] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Code] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [TaxValue] decimal(18,2) NOT NULL,
+    [ValidFrom] datetime2 NOT NULL,
+    [ValidTo] datetime2 NULL,
+    CONSTRAINT [PK_TaxGroups] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[TherapeuticClasses] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    CONSTRAINT [PK_TherapeuticClasses] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [ids].[Roles] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [NormalizedName] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [tiers].[Guests] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [CompanyName] nvarchar(max) NULL,
+    [Email] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Fax] nvarchar(max) NULL,
+    CONSTRAINT [PK_Guests] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Tiers].[Organizations] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [NIS] nvarchar(max) NULL,
+    [NIF] nvarchar(max) NULL,
+    [RC] nvarchar(max) NULL,
+    [DisabledReason] nvarchar(max) NULL,
+    [Owner] nvarchar(max) NULL,
+    [OrganizationStatus] bigint NOT NULL,
+    [Activity] smallint NOT NULL,
+    [EstablishmentDate] datetime2 NULL,
+    [AI] nvarchar(max) NULL,
+    [ECommerce] bit NOT NULL,
+    CONSTRAINT [PK_Organizations] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Catalog].[INNCodes] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [FormId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_INNCodes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_INNCodes_Forms_FormId] FOREIGN KEY ([FormId]) REFERENCES [Catalog].[Forms] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [ids].[RoleClaims] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Type] nvarchar(max) NULL,
+    [Value] nvarchar(max) NULL,
+    [RoleId] uniqueidentifier NULL,
+    CONSTRAINT [PK_RoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_RoleClaims_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [ids].[Roles] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [ids].[Users] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [UserName] nvarchar(max) NULL,
+    [NormalizedUserName] nvarchar(max) NULL,
+    [Email] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(max) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [OrganizationId] uniqueidentifier NULL,
+    [ManagerId] uniqueidentifier NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Users_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Shared].[Addresses] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Street] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [State] nvarchar(max) NULL,
+    [Township] nvarchar(max) NULL,
+    [ZipCode] nvarchar(max) NULL,
+    [Latitude] real NOT NULL,
+    [Longitude] real NOT NULL,
+    [Country] nvarchar(max) NULL,
+    [Main] bit NOT NULL,
+    [Shipping] bit NOT NULL,
+    [Billing] bit NOT NULL,
+    [OrganizationId] uniqueidentifier NULL,
+    [ManufacturerId] uniqueidentifier NULL,
+    [GuestId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Addresses] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Addresses_Guests_GuestId] FOREIGN KEY ([GuestId]) REFERENCES [tiers].[Guests] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Addresses_Manufacturers_ManufacturerId] FOREIGN KEY ([ManufacturerId]) REFERENCES [Catalog].[Manufacturers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Addresses_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE NO ACTION
+);
+
+GO
+
+CREATE TABLE [Shared].[Emails] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Email] nvarchar(max) NULL,
+    [OrganizationId] uniqueidentifier NULL,
+    [ManufacturerId] uniqueidentifier NULL,
+    [GuestId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Emails] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Emails_Manufacturers_ManufacturerId] FOREIGN KEY ([ManufacturerId]) REFERENCES [Catalog].[Manufacturers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Emails_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE NO ACTION
+);
+
+GO
+
+CREATE TABLE [Shared].[PhoneNumbers] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [CountryCode] nvarchar(max) NULL,
+    [Number] nvarchar(max) NULL,
+    [IsFax] bit NOT NULL,
+    [OrganizationId] uniqueidentifier NULL,
+    [ManufacturerId] uniqueidentifier NULL,
+    [GuestId] uniqueidentifier NULL,
+    CONSTRAINT [PK_PhoneNumbers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PhoneNumbers_Manufacturers_ManufacturerId] FOREIGN KEY ([ManufacturerId]) REFERENCES [Catalog].[Manufacturers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PhoneNumbers_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE NO ACTION
+);
+
+GO
+
+CREATE TABLE [Tiers].[BankAccount] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [BankName] nvarchar(max) NULL,
+    [BankCode] nvarchar(max) NULL,
+    [Number] nvarchar(max) NULL,
+    [OrganizationId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_BankAccount] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_BankAccount_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Tiers].[Customers] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [OrganizationId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Customers_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Tiers].[Suppliers] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [OrganizationId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Suppliers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Suppliers_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Catalog].[INNCodeDosage] (
+    [INNCodeId] uniqueidentifier NOT NULL,
+    [INNId] uniqueidentifier NOT NULL,
+    [DosageId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_INNCodeDosage] PRIMARY KEY ([DosageId], [INNCodeId], [INNId]),
+    CONSTRAINT [FK_INNCodeDosage_Dosages_DosageId] FOREIGN KEY ([DosageId]) REFERENCES [Catalog].[Dosages] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_INNCodeDosage_INNCodes_INNCodeId] FOREIGN KEY ([INNCodeId]) REFERENCES [Catalog].[INNCodes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_INNCodeDosage_INNs_INNId] FOREIGN KEY ([INNId]) REFERENCES [Catalog].[INNs] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Catalog].[Products] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Code] nvarchar(max) NULL,
+    [FullName] nvarchar(max) NULL,
+    [Description] text NULL,
+    [RegistrationNumber] nvarchar(max) NULL,
+    [PublicPrice] decimal(18,2) NOT NULL,
+    [ReferencePrice] decimal(18,2) NOT NULL,
+    [Imported] bit NOT NULL,
+    [Refundable] bit NOT NULL,
+    [Psychotropic] bit NOT NULL,
+    [Thermolabile] bit NOT NULL,
+    [Removed] bit NOT NULL,
+    [ForHospital] bit NOT NULL,
+    [Princeps] bit NOT NULL,
+    [PickingZoneId] uniqueidentifier NULL,
+    [PackagingContent] nvarchar(max) NULL,
+    [PackagingContentUnit] nvarchar(max) NULL,
+    [DciConcat] nvarchar(max) NULL,
+    [DosageConcat] nvarchar(max) NULL,
+    [Packaging] int NOT NULL,
+    [DefaultLocation] nvarchar(max) NULL,
+    [ProductClassId] uniqueidentifier NULL,
+    [TherapeuticClassId] uniqueidentifier NULL,
+    [PharmacologicalClassId] uniqueidentifier NULL,
+    [INNCodeId] uniqueidentifier NULL,
+    [TaxGroupId] uniqueidentifier NOT NULL,
+    [BrandId] uniqueidentifier NULL,
+    [ManufacturerId] uniqueidentifier NOT NULL,
+    [ListId] uniqueidentifier NULL,
+    [PurchasePrice] decimal(18,2) NOT NULL,
+    [SalePrice] decimal(18,2) NOT NULL,
+    [ProductState] smallint NOT NULL,
+    [PackagingId] uniqueidentifier NULL,
+    [ExternalCode] nvarchar(max) NULL,
+    [Height] real NOT NULL,
+    [Width] real NOT NULL,
+    [Length] real NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_Brands_BrandId] FOREIGN KEY ([BrandId]) REFERENCES [Catalog].[Brands] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_INNCodes_INNCodeId] FOREIGN KEY ([INNCodeId]) REFERENCES [Catalog].[INNCodes] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_Lists_ListId] FOREIGN KEY ([ListId]) REFERENCES [Catalog].[Lists] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_Manufacturers_ManufacturerId] FOREIGN KEY ([ManufacturerId]) REFERENCES [Catalog].[Manufacturers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Products_Packaging_PackagingId] FOREIGN KEY ([PackagingId]) REFERENCES [Catalog].[Packaging] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_PharmacologicalClasses_PharmacologicalClassId] FOREIGN KEY ([PharmacologicalClassId]) REFERENCES [Catalog].[PharmacologicalClasses] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_PickingZone_PickingZoneId] FOREIGN KEY ([PickingZoneId]) REFERENCES [Catalog].[PickingZone] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_ProductClasses_ProductClassId] FOREIGN KEY ([ProductClassId]) REFERENCES [Catalog].[ProductClasses] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Products_TaxGroups_TaxGroupId] FOREIGN KEY ([TaxGroupId]) REFERENCES [Catalog].[TaxGroups] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Products_TherapeuticClasses_TherapeuticClassId] FOREIGN KEY ([TherapeuticClassId]) REFERENCES [Catalog].[TherapeuticClasses] ([Id]) ON DELETE NO ACTION
+);
+
+GO
+
+CREATE TABLE [ids].[UserClaims] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Type] nvarchar(max) NULL,
+    [Value] nvarchar(max) NULL,
+    [UserId] uniqueidentifier NULL,
+    CONSTRAINT [PK_UserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserClaims_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [ids].[Users] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [ids].[UserRoles] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [RoleId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_UserRoles] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserRoles_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [ids].[Roles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserRoles_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [ids].[Users] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [ids].[UserTokens] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [LoginProvider] nvarchar(max) NULL,
+    [TokenName] nvarchar(max) NULL,
+    [TokenValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserTokens] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserTokens_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [ids].[Users] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Tiers].[SupplierCustomers] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [CustomerId] uniqueidentifier NULL,
+    [SupplierId] uniqueidentifier NULL,
+    [TaxGroupId] uniqueidentifier NULL,
+    [OnlineCustomer] bit NOT NULL,
+    [IsPickUpLocation] bit NOT NULL,
+    [DeliveryType] int NOT NULL,
+    [QuotaEligibility] bit NOT NULL,
+    [DefaultSalesPerson] uniqueidentifier NULL,
+    [DefaultSalesGroup] uniqueidentifier NULL,
+    [DefaultDeliverySector] uniqueidentifier NULL,
+    [OrganizationStatus] bigint NOT NULL,
+    CONSTRAINT [PK_SupplierCustomers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_SupplierCustomers_Customers_CustomerId] FOREIGN KEY ([CustomerId]) REFERENCES [Tiers].[Customers] ([Id]),
+    CONSTRAINT [FK_SupplierCustomers_Suppliers_SupplierId] FOREIGN KEY ([SupplierId]) REFERENCES [Tiers].[Suppliers] ([Id]),
+    CONSTRAINT [FK_SupplierCustomers_TaxGroups_TaxGroupId] FOREIGN KEY ([TaxGroupId]) REFERENCES [Catalog].[TaxGroups] ([Id]) ON DELETE NO ACTION
+);
+
+GO
+
+CREATE TABLE [ImageItem] (
+    [ProductId] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [ImageBytes] varbinary(max) NULL,
+    [ImageUrl] nvarchar(max) NULL,
+    [MainImage] bit NOT NULL,
+    CONSTRAINT [PK_ImageItem] PRIMARY KEY ([ProductId], [Id]),
+    CONSTRAINT [FK_ImageItem_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Catalog].[Products] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [Tiers].[AllowedProductClasses] (
+    [ProductClassId] uniqueidentifier NOT NULL,
+    [SupplierCustomerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_AllowedProductClasses] PRIMARY KEY ([SupplierCustomerId], [ProductClassId]),
+    CONSTRAINT [FK_AllowedProductClasses_ProductClasses_ProductClassId] FOREIGN KEY ([ProductClassId]) REFERENCES [Catalog].[ProductClasses] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AllowedProductClasses_SupplierCustomers_SupplierCustomerId] FOREIGN KEY ([SupplierCustomerId]) REFERENCES [Tiers].[SupplierCustomers] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreatedByUserId', N'CreatedDateTime', N'Description', N'IsMedicamentClass', N'Name', N'ParentProductClassId', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[Catalog].[ProductClasses]'))
+    SET IDENTITY_INSERT [Catalog].[ProductClasses] ON;
+INSERT INTO [Catalog].[ProductClasses] ([Id], [CreatedByUserId], [CreatedDateTime], [Description], [IsMedicamentClass], [Name], [ParentProductClassId], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('66aed9d0-3b48-4ba3-af1c-dfe3eb79a3aa', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'AUTRES', NULL, NULL, NULL),
+('d25dfd7d-9223-494a-8391-da8034f6d2ec', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'COMPLEMENT ALIMENTAIRE', NULL, NULL, NULL),
+('350c5fd1-91b0-4ade-8a88-cc35b4f66e48', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'COSMETIQUE', NULL, NULL, NULL),
+('0b3f80f6-b5ce-4c15-80dc-b7c5f270b9e1', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'DISPOSITIF MEDICAL', NULL, NULL, NULL),
+('5722c58f-85dc-4f5b-b1fe-afd32148e147', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'EQUIPEMENT MEDICAL', NULL, NULL, NULL),
+('e8dd9b8b-40a4-47b2-8a82-50514a661d04', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(1 AS bit), N'MEDICAMENT', NULL, NULL, NULL),
+('e03ab546-8d0c-4394-8164-29a7c4801e13', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'PHYTOTHERAPIE', NULL, NULL, NULL),
+('8fe69e79-d5d6-48b2-8680-102fc5ae5e76', '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', NULL, CAST(0 AS bit), N'REACTIF', NULL, NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreatedByUserId', N'CreatedDateTime', N'Description', N'IsMedicamentClass', N'Name', N'ParentProductClassId', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[Catalog].[ProductClasses]'))
+    SET IDENTITY_INSERT [Catalog].[ProductClasses] OFF;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('b512f030-544c-eb11-9ce0-a4c3f0d0215b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'OnlineCustomer', N'ONLINECUSTOMER', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0214b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Buyer', N'BUYER', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0213b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'TechnicalDirectorGroup', N'TECHNICALDIRECTORGROUP', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0212b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'TechnicalDirector', N'TECHNICALDIRECTOR', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0208b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Admin', N'ADMIN', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0210b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'SalesPerson', N'SALESPERSON', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0209b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'SuperAdmin', N'SUPERADMIN', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0216b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'InventoryManager', N'INVENTORYMANAGER', NULL, NULL),
+('b512f030-544c-eb11-9ce0-a4c3f0d0211b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'BuyerGroup', N'BUYERGROUP', NULL, NULL);
+('86f52f7d-0aba-4b21-9201-33d09306d5ed', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'ClaimManager', N'CLAIMMANAGER', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'AccessFailedCount', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Email', N'EmailConfirmed', N'LockoutEnabled', N'LockoutEnd', N'ManagerId', N'NormalizedEmail', N'NormalizedUserName', N'OrganizationId', N'PasswordHash', N'PhoneNumber', N'PhoneNumberConfirmed', N'SecurityStamp', N'TwoFactorEnabled', N'UpdatedByUserId', N'UpdatedDateTime', N'UserName') AND [object_id] = OBJECT_ID(N'[ids].[Users]'))
+    SET IDENTITY_INSERT [ids].[Users] ON;
+INSERT INTO [ids].[Users] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [ManagerId], [NormalizedEmail], [NormalizedUserName], [OrganizationId], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UpdatedByUserId], [UpdatedDateTime], [UserName])
+VALUES ('12837d3d-793f-ea11-becb-5cea1d05f660', 0, NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'phong@gmail.com', CAST(1 AS bit), CAST(0 AS bit), NULL, NULL, N'PHONG@GMAIL.COM', N'PHONG@GMAIL.COM', NULL, N'AQAAAAEAACcQAAAAELBcKuXWkiRQEYAkD/qKs9neac5hxWs3bkegIHpGLtf+zFHuKnuI3lBqkWO9TMmFAQ==', NULL, CAST(0 AS bit), N'5M2QLL65J6H6VFIS7VZETKXY27KNVVYJ', CAST(0 AS bit), NULL, NULL, N'admin');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'AccessFailedCount', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Email', N'EmailConfirmed', N'LockoutEnabled', N'LockoutEnd', N'ManagerId', N'NormalizedEmail', N'NormalizedUserName', N'OrganizationId', N'PasswordHash', N'PhoneNumber', N'PhoneNumberConfirmed', N'SecurityStamp', N'TwoFactorEnabled', N'UpdatedByUserId', N'UpdatedDateTime', N'UserName') AND [object_id] = OBJECT_ID(N'[ids].[Users]'))
+    SET IDENTITY_INSERT [ids].[Users] OFF;
+
+GO
+
+CREATE INDEX [IX_INNCodeDosage_INNCodeId] ON [Catalog].[INNCodeDosage] ([INNCodeId]);
+
+GO
+
+CREATE INDEX [IX_INNCodeDosage_INNId] ON [Catalog].[INNCodeDosage] ([INNId]);
+
+GO
+
+CREATE INDEX [IX_INNCodes_FormId] ON [Catalog].[INNCodes] ([FormId]);
+
+GO
+
+CREATE INDEX [IX_Products_BrandId] ON [Catalog].[Products] ([BrandId]);
+
+GO
+
+CREATE INDEX [IX_Products_INNCodeId] ON [Catalog].[Products] ([INNCodeId]);
+
+GO
+
+CREATE INDEX [IX_Products_ListId] ON [Catalog].[Products] ([ListId]);
+
+GO
+
+CREATE INDEX [IX_Products_ManufacturerId] ON [Catalog].[Products] ([ManufacturerId]);
+
+GO
+
+CREATE INDEX [IX_Products_PackagingId] ON [Catalog].[Products] ([PackagingId]);
+
+GO
+
+CREATE INDEX [IX_Products_PharmacologicalClassId] ON [Catalog].[Products] ([PharmacologicalClassId]);
+
+GO
+
+CREATE INDEX [IX_Products_PickingZoneId] ON [Catalog].[Products] ([PickingZoneId]);
+
+GO
+
+CREATE INDEX [IX_Products_ProductClassId] ON [Catalog].[Products] ([ProductClassId]);
+
+GO
+
+CREATE INDEX [IX_Products_TaxGroupId] ON [Catalog].[Products] ([TaxGroupId]);
+
+GO
+
+CREATE INDEX [IX_Products_TherapeuticClassId] ON [Catalog].[Products] ([TherapeuticClassId]);
+
+GO
+
+CREATE INDEX [IX_RoleClaims_RoleId] ON [ids].[RoleClaims] ([RoleId]);
+
+GO
+
+CREATE INDEX [IX_UserClaims_UserId] ON [ids].[UserClaims] ([UserId]);
+
+GO
+
+CREATE INDEX [IX_UserRoles_RoleId] ON [ids].[UserRoles] ([RoleId]);
+
+GO
+
+CREATE INDEX [IX_UserRoles_UserId] ON [ids].[UserRoles] ([UserId]);
+
+GO
+
+CREATE INDEX [IX_Users_OrganizationId] ON [ids].[Users] ([OrganizationId]);
+
+GO
+
+CREATE INDEX [IX_UserTokens_UserId] ON [ids].[UserTokens] ([UserId]);
+
+GO
+
+CREATE INDEX [IX_Addresses_GuestId] ON [Shared].[Addresses] ([GuestId]);
+
+GO
+
+CREATE INDEX [IX_Addresses_ManufacturerId] ON [Shared].[Addresses] ([ManufacturerId]);
+
+GO
+
+CREATE INDEX [IX_Addresses_OrganizationId] ON [Shared].[Addresses] ([OrganizationId]);
+
+GO
+
+CREATE INDEX [IX_Emails_ManufacturerId] ON [Shared].[Emails] ([ManufacturerId]);
+
+GO
+
+CREATE INDEX [IX_Emails_OrganizationId] ON [Shared].[Emails] ([OrganizationId]);
+
+GO
+
+CREATE INDEX [IX_PhoneNumbers_ManufacturerId] ON [Shared].[PhoneNumbers] ([ManufacturerId]);
+
+GO
+
+CREATE INDEX [IX_PhoneNumbers_OrganizationId] ON [Shared].[PhoneNumbers] ([OrganizationId]);
+
+GO
+
+CREATE INDEX [IX_AllowedProductClasses_ProductClassId] ON [Tiers].[AllowedProductClasses] ([ProductClassId]);
+
+GO
+
+CREATE INDEX [IX_BankAccount_OrganizationId] ON [Tiers].[BankAccount] ([OrganizationId]);
+
+GO
+
+CREATE UNIQUE INDEX [IX_Customers_OrganizationId] ON [Tiers].[Customers] ([OrganizationId]);
+
+GO
+
+CREATE INDEX [IX_SupplierCustomers_CustomerId] ON [Tiers].[SupplierCustomers] ([CustomerId]);
+
+GO
+
+CREATE INDEX [IX_SupplierCustomers_SupplierId] ON [Tiers].[SupplierCustomers] ([SupplierId]);
+
+GO
+
+CREATE INDEX [IX_SupplierCustomers_TaxGroupId] ON [Tiers].[SupplierCustomers] ([TaxGroupId]);
+
+GO
+
+CREATE UNIQUE INDEX [IX_Suppliers_OrganizationId] ON [Tiers].[Suppliers] ([OrganizationId]);
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210208125950_Init', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [ConventionType] int NOT NULL DEFAULT 0;
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [Dept] decimal(18,2) NOT NULL DEFAULT 0.0;
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [PaymentDeadline] int NOT NULL DEFAULT 0;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210303123521_addDebt', N'3.1.8');
+
+GO
+
+ALTER TABLE [Shared].[Addresses] ADD [UserId] uniqueidentifier NULL;
+
+GO
+
+ALTER TABLE [ids].[Users] ADD [Company] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [ids].[Users] ADD [FirstName] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [ids].[Users] ADD [LastName] nvarchar(max) NULL;
+
+GO
+
+CREATE INDEX [IX_Addresses_UserId] ON [Shared].[Addresses] ([UserId]);
+
+GO
+
+ALTER TABLE [Shared].[Addresses] ADD CONSTRAINT [FK_Addresses_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [ids].[Users] ([Id]) ON DELETE NO ACTION;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210315132837_addAddressesToUser', N'3.1.8');
+
+GO
+
+CREATE TABLE [Tiers].[Sectors] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [ExternalId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [Code] nvarchar(max) NULL,
+    [OrganizationId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Sectors] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Sectors_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Tiers].[Organizations] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE INDEX [IX_Sectors_OrganizationId] ON [Tiers].[Sectors] ([OrganizationId]);
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210323145813_addSectors', N'3.1.8');
+
+GO
+
+CREATE INDEX [IX_SupplierCustomers_DefaultDeliverySector] ON [Tiers].[SupplierCustomers] ([DefaultDeliverySector]);
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD CONSTRAINT [FK_SupplierCustomers_Sectors_DefaultDeliverySector] FOREIGN KEY ([DefaultDeliverySector]) REFERENCES [Tiers].[Sectors] ([Id]);
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210328090533_addSectorToSupplierCustomer', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [CustomerState] smallint NOT NULL DEFAULT CAST(0 AS smallint);
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [LimitCredit] decimal(18,2) NOT NULL DEFAULT 0.0;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210328131331_addCustomerState', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[Products] ADD [DciCode] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Catalog].[Products] ADD [ProductGroup] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Catalog].[ProductClasses] ADD [Code] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210413114457_addAxProductAtts', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [Code] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [CustomerGroup] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [MonthlyObjective] decimal(18,2) NOT NULL DEFAULT 0.0;
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [PaymentMode] int NOT NULL DEFAULT 0;
+
+GO
+
+ALTER TABLE [Tiers].[Organizations] ADD [OrganizationGroupCode] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210419085243_addCodeToCUstomer', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [SalesGroup] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210419120620_addOrgCode', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [SalesPersonName] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[Customers] ADD [Code] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210420090948_addCodeCustomer', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[SupplierCustomers] ADD [PaymentMethod] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[Organizations] ADD [OrganizationActivity] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210518090255_removeProductClass', N'3.1.8');
+
+GO
+
+ALTER TABLE [Tiers].[Organizations] ADD [CreatedBy] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[Organizations] ADD [UpdatedBy] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[Customers] ADD [CreatedBy] nvarchar(max) NULL;
+
+GO
+
+ALTER TABLE [Tiers].[Customers] ADD [UpdatedBy] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210629203827_AddCreatedByUpdatedByString', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[Products] ADD [Quota] bit NOT NULL DEFAULT CAST(0 AS bit);
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('b512f030-544c-eb11-9ce0-a4c3f0d0217b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Supervisor', N'SUPERVISOR', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210708123619_addQuotaProduct', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[PickingZone] ADD [ZoneGroupId] uniqueidentifier NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210714130414_addZoneGroup', N'3.1.8');
+
+GO
+
+CREATE TABLE [Catalog].[ZoneGroup] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    CONSTRAINT [PK_ZoneGroup] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE INDEX [IX_PickingZone_ZoneGroupId] ON [Catalog].[PickingZone] ([ZoneGroupId]);
+
+GO
+
+ALTER TABLE [Catalog].[PickingZone] ADD CONSTRAINT [FK_PickingZone_ZoneGroup_ZoneGroupId] FOREIGN KEY ([ZoneGroupId]) REFERENCES [Catalog].[ZoneGroup] ([Id]) ON DELETE NO ACTION;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210714131422_addZoneGroupEntity', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[PickingZone] ADD [ZoneType] bigint NOT NULL DEFAULT CAST(0 AS bigint);
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210718094322_AddZoneType', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[PickingZone] ADD [Order] int NOT NULL DEFAULT 0;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210727084459_AddPickingZoneOrder', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[ZoneGroup] ADD [Order] int NOT NULL DEFAULT 0;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210727135019_AddGroupZoneOrder', N'3.1.8');
+
+GO
+
+DELETE FROM [ids].[Roles]
+WHERE [Id] = 'b512f030-544c-eb11-9ce0-a4c3f0d0217b';
+SELECT @@ROWCOUNT;
+
+
+GO
+
+CREATE TABLE [Catalog].[TransactionType] (
+    [Id] uniqueidentifier NOT NULL DEFAULT (newsequentialid()),
+    [RowVersion] rowversion NULL,
+    [CreatedDateTime] datetimeoffset NOT NULL,
+    [CreatedByUserId] uniqueidentifier NOT NULL,
+    [UpdatedByUserId] uniqueidentifier NULL,
+    [UpdatedDateTime] datetimeoffset NULL,
+    [TransactionTypeName] nvarchar(max) NULL,
+    [Blocked] bit NOT NULL,
+    CONSTRAINT [PK_TransactionType] PRIMARY KEY ([Id])
+);
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('d63c47de-852f-4ce7-93e1-c3db21a06d48', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Executer', N'EXECUTER', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('ec6e3c62-a47d-4e35-bc41-cda44e16afc2', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Controller', N'CONTROLLER', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('8a8479d1-b0c7-43d6-8896-175cbcd27af8', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'PrintingAgent', N'PRINTINGAGENT', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210812141004_AddTransactionTypeTable', N'3.1.8');
+
+GO
+
+ALTER TABLE [Catalog].[TransactionType] ADD [CodeTransaction] bigint NOT NULL DEFAULT CAST(0 AS bigint);
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210815151915_AddCodeTransaction', N'3.1.8');
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('8c2f6a37-f308-438a-b39b-1400675ac734', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Consolidator', N'CONSOLIDATOR', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210901135915_addConsolidatorRole', N'3.1.8');
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('b512f030-544c-eb11-9ce0-a4c3f0d0650b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'SalesManager', N'SALESMANAGER', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20211025081337_salesManagerRole', N'3.1.8');
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] ON;
+INSERT INTO [ids].[Roles] ([Id], [ConcurrencyStamp], [CreatedByUserId], [CreatedDateTime], [Name], [NormalizedName], [UpdatedByUserId], [UpdatedDateTime])
+VALUES ('b512f030-544c-eef1-9ce0-a4c3f0d0650b', NULL, '00000000-0000-0000-0000-000000000000', '0001-01-01T00:00:00.0000000+00:00', N'Supervisor', N'SUPERVISOR', NULL, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'CreatedByUserId', N'CreatedDateTime', N'Name', N'NormalizedName', N'UpdatedByUserId', N'UpdatedDateTime') AND [object_id] = OBJECT_ID(N'[ids].[Roles]'))
+    SET IDENTITY_INSERT [ids].[Roles] OFF;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20211025123409_supervisor', N'3.1.8');
+
+GO
+

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GHP - Ecommerce</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap3661.css" />
+    <link rel="stylesheet" href="~/fonts/fontawesome/css/all.min3661.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/ui3661.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/responsive3661.css" />
+
+
+</head>
+<body>
+    <header class="section-header">
+        <partial name="_Header" />
+        @await Component.InvokeAsync("CatalogController")
+
+    </header>
+    <section class="section-content padding-y" id="vue-app">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+
+    <script src="~/lib/jquery/dist/jquery-2.0.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/script3661.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios@0.2.1/dist/axios.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/catalog/catalogVue.js"></script>
+    <script src="~/js/product/product.js"></script>
+    <script src="~/js/product/productListComponent.js"></script>
+</body>
+</html>

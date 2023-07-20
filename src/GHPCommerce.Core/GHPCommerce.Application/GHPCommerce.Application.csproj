@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Customers\**" />
+    <Compile Remove="Sales\**" />
+    <EmbeddedResource Remove="Customers\**" />
+    <EmbeddedResource Remove="Sales\**" />
+    <None Remove="Customers\**" />
+    <None Remove="Sales\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Catalog\INNCodes\Events\" />
+    <Folder Include="Catalog\Manufacturers\Events\" />
+    <Folder Include="Catalog\PharmacologicalClasses\DTOs\" />
+    <Folder Include="Catalog\ProductClasses\Events\" />
+    <Folder Include="Catalog\Products\Events\" />
+    <Folder Include="Catalog\TaxGroups\Events\" />
+    <Folder Include="Common\DTOs\" />
+    <Folder Include="Common\Events\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Tiers\Guests\Events\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="9.0.0" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+	  <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.2.0" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="3.2.3" />
+    <PackageReference Include="SendGrid" Version="9.21.2" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
+	
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns\GHPCommerce.CrossCuttingConcerns.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Persistence\GHPCommerce.Persistence.csproj" />
+    <ProjectReference Include="..\GHPCommerce.Core.Shared\GHPCommerce.Core.Shared.csproj" />
+    <ProjectReference Include="..\GHPCommerce.Domain\GHPCommerce.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

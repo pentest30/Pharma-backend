@@ -1,0 +1,33 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://adaxaos-test:8101/DynamicsAx/Services/DOSI_SalesOrderServiceGroup"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference1"
+    ],
+    "references": [
+      "Microsoft.Bcl.AsyncInterfaces, {Microsoft.Bcl.AsyncInterfaces, 5.0.0}",
+      "Microsoft.Extensions.ObjectPool, {Microsoft.Extensions.ObjectPool, 5.0.10}",
+      "System.Numerics.Vectors, {System.Numerics.Vectors, 4.5.0}",
+      "System.Reflection.DispatchProxy, {System.Reflection.DispatchProxy, 4.7.1}",
+      "System.Security.AccessControl, {System.Security.AccessControl, 5.0.0}",
+      "System.Security.Cryptography.Xml, {System.Security.Cryptography.Xml, 5.0.0}",
+      "System.Security.Permissions, {System.Security.Permissions, 5.0.0}",
+      "System.Security.Principal.Windows, {System.Security.Principal.Windows, 5.0.0}",
+      "System.ServiceModel, {System.ServiceModel.Primitives, 4.9.0}",
+      "System.ServiceModel.Duplex, {System.ServiceModel.Duplex, 4.9.0}",
+      "System.ServiceModel.Http, {System.ServiceModel.Http, 4.9.0}",
+      "System.ServiceModel.NetTcp, {System.ServiceModel.NetTcp, 4.9.0}",
+      "System.ServiceModel.Primitives, {System.ServiceModel.Primitives, 4.9.0}",
+      "System.ServiceModel.Security, {System.ServiceModel.Security, 4.9.0}"
+    ],
+    "sync": true,
+    "targetFramework": "netstandard2.1",
+    "typeReuseMode": "All"
+  }
+}

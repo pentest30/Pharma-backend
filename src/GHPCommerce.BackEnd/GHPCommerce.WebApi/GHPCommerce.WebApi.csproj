@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>cb088293-ba75-4bfe-83e9-6942a7105754</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <PackageReference Include="App.Metrics.AspNetCore.Core" Version="4.2.0" />
+  <PackageReference Include="App.Metrics.AspNetCore.Endpoints" Version="4.2.0" />
+  <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="4.2.0" />
+  <PackageReference Include="App.Metrics.Core" Version="4.2.0" />
+  <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.2.0" />
+  <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="3.1.2" />
+  <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="3.1.2" />
+  <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+  <PackageReference Include="IdentityModel" Version="5.0.0" />
+	  <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+
+	   <PackageReference Include="FluentValidation" Version="9.2.2" />
+
+	   <PackageReference Include="MassTransit.AspNetCore" Version="7.2.4-develop.283" />
+
+	   <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    
+
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.22" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="NLog" Version="4.7.10" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.12.0" />
+    <PackageReference Include="RedLock.net" Version="2.3.1" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="3.1.12" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GHPCommerce.Core\GHPCommerce.Application\GHPCommerce.Application.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Infra\GHPCommerce.Infra.csproj" />
+    <ProjectReference Include="..\..\GHPCommerce.Infrastructure\GHPCommerce.Persistence\GHPCommerce.Persistence.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Inventory\GHPCommerce.Modules.Inventory.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.PreparationOrder\GHPCommerce.Modules.PreparationOrder.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Procurement\GHPCommerce.Modules.Procurement.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Quota\GHPCommerce.Modules.Quota.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.Sales\GHPCommerce.Modules.Sales.csproj" />
+    <ProjectReference Include="..\..\Modules\GHPCommerce.Modules.HumanResource\GHPCommerce.Modules.HumanResource.csproj" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Connected Services\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Images" />
+    <Folder Include="Models\Customers\" />
+    <Folder Include="Models\LogApis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  
+</Project>
